@@ -130,6 +130,12 @@ container: build-linux
 	    -f $(BUILD_DIR)/$${target}/Dockerfile .;                                       \
 	done
 
+container-kubectl-delivery:
+	image=$(IMAGE_PREFIX)kubectl-delivery$(IMAGE_SUFFIX);                                  \
+	docker build -t $(REGISTRY)/$${image}:$(VERSION)                                 \
+	  --label $(DOCKER_LABELS)                                                       \
+	  -f $(BUILD_DIR)/kubectl-delivery/Dockerfile .;                                       \
+
 push: container
 	@for target in $(TARGETS); do                                                      \
 	  image=$(IMAGE_PREFIX)$${target}$(IMAGE_SUFFIX);                                  \
