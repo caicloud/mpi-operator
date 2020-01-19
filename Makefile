@@ -29,7 +29,7 @@
 ROOT := github.com/kubeflow/mpi-operator
 
 # Target binaries. You can build multiple binaries for a single project.
-TARGETS := mpi-operator
+TARGETS := mpi-operator kubectl-delivery
 
 # Container image prefix and suffix added to targets.
 # The final built images are:
