@@ -1,0 +1,23 @@
+deployments:
+  mpi-operator:
+    replicas: 1
+    containers:
+      mpi-operator-container:
+        image:
+          registry: clv.cargo.io/release
+          name: mpi-operator
+          tag: v0.2.4
+          pullPolicy: IfNotPresent
+        args: [
+          "-alsologtostderr",
+          "--kubectl-delivery-image",
+          "[[ registry_release ]]/kubectl-delivery:v0.2.4"
+        ]
+        resources:
+          useDefault: false
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi
