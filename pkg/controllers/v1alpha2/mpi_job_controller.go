@@ -73,7 +73,6 @@ const (
 	worker              = "worker"
 	launcherSuffix      = "-launcher"
 	workerSuffix        = "-worker"
-	gpuResourceName     = "nvidia.com/gpu"
 	labelGroupName      = "group_name"
 	labelMPIJobName     = "mpi_job_name"
 	labelMPIRoleType    = "mpi_role_type"
