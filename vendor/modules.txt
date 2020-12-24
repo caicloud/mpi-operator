@@ -60,10 +60,8 @@ github.com/kubeflow/common/job_controller/api/v1
 # github.com/kubernetes-sigs/kube-batch v0.4.2
 github.com/kubernetes-sigs/kube-batch/pkg/apis/scheduling/v1alpha1
 github.com/kubernetes-sigs/kube-batch/pkg/client/clientset/versioned
-github.com/kubernetes-sigs/kube-batch/pkg/client/clientset/versioned/fake
 github.com/kubernetes-sigs/kube-batch/pkg/client/clientset/versioned/scheme
 github.com/kubernetes-sigs/kube-batch/pkg/client/clientset/versioned/typed/scheduling/v1alpha1
-github.com/kubernetes-sigs/kube-batch/pkg/client/clientset/versioned/typed/scheduling/v1alpha1/fake
 github.com/kubernetes-sigs/kube-batch/pkg/client/informers/externalversions
 github.com/kubernetes-sigs/kube-batch/pkg/client/informers/externalversions/internalinterfaces
 github.com/kubernetes-sigs/kube-batch/pkg/client/informers/externalversions/scheduling
