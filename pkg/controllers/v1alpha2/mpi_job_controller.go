@@ -909,7 +909,7 @@ func (c *MPIJobController) handleObject(obj interface{}) {
 
 // doUpdateJobStatus updates the status of the given MPIJob by call apiServer.
 func (c *MPIJobController) doUpdateJobStatus(mpiJob *kubeflow.MPIJob) error {
-	_, err := c.kubeflowClient.KubeflowV1alpha2().MPIJobs(mpiJob.Namespace).UpdateStatus(mpiJob)
+	_, err := c.kubeflowClient.KubeflowV1alpha2().MPIJobs(mpiJob.Namespace).Update(mpiJob)
 	return err
 }
 
