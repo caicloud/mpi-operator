@@ -137,11 +137,14 @@ container-kubectl-delivery:
 	  --label $(DOCKER_LABELS)                                                       \
 	  -f $(BUILD_DIR)/kubectl-delivery/Dockerfile .;                                       \
 
-push: container
+push: container container-kubectl-delivery
 	@for target in $(TARGETS); do                                                      \
 	  image=$(IMAGE_PREFIX)$${target}$(IMAGE_SUFFIX);                                  \
 	  docker push $(REGISTRY)/$${image}:$(VERSION);                                    \
 	done
+	image=$(IMAGE_PREFIX)kubectl-delivery$(IMAGE_SUFFIX);                                  \
+	docker push  $(REGISTRY)/$${image}:$(VERSION)
+
 
 .PHONY: clean
 clean:

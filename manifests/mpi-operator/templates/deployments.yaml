@@ -15,10 +15,10 @@ spec:
       - image: {{ include "common.images.image" (dict "context" $ "repository" .Values.platformConfig.imageRepositoryRelease "imageRoot" .Values.image) | quote }}
         imagePullPolicy: {{ default "Always" .Values.platformConfig.imagePullPolicy | quote }}
         name: {{ include "common.names.fullname" . }}
-        args: 
-          {{- range $.Values.args }}
-          - {{ . | quote }}
-          {{- end }}
+        args:
+          - "-alsologtostderr"
+          - "--kubectl-delivery-image"
+          - {{ include "common.images.image" (dict "context" $ "repository" .Values.platformConfig.imageRepositoryRelease "imageRoot" .Values.delivery_image) | quote }}
         resources:
           limits:
             cpu: 100m
