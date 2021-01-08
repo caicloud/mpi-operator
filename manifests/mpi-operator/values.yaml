@@ -6,7 +6,5 @@ platformConfig:
 image:
   name: mpi-operator
 
-args: 
-  - "-alsologtostderr"
-  - "--kubectl-delivery-image"
-  - "[[ registry_release ]]/kubectl-delivery:v0.2.4"
+delivery_image:
+  name: kubectl-delivery
