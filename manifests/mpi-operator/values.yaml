@@ -8,3 +8,4 @@ image:
 
 delivery_image:
   name: kubectl-delivery
+  tag: v0.2.4
