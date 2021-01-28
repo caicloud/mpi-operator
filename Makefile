@@ -137,7 +137,7 @@ container-kubectl-delivery:
 	  --label $(DOCKER_LABELS)                                                       \
 	  -f $(BUILD_DIR)/kubectl-delivery/Dockerfile .;                                       \
 
-push: container container-kubectl-delivery
+push: container
 	@for target in $(TARGETS); do                                                      \
 	  image=$(IMAGE_PREFIX)$${target}$(IMAGE_SUFFIX);                                  \
 	  docker push $(REGISTRY)/$${image}:$(VERSION);                                    \
