@@ -497,11 +497,16 @@ func (c *MPIJobController) syncHandler(key string) error {
 	}
 
 	var worker *appsv1.StatefulSet
+	var workerReplicas int32
 	// We're done if the launcher either succeeded or failed.
 	done := launcher != nil && isJobFinished(launcher)
+
 	if !done {
-		workerSpec := mpiJob.Spec.MPIReplicaSpecs[kubeflow.MPIReplicaTypeWorker]
-		workerReplicas := *workerSpec.Replicas
+		if workerSpec, ok := mpiJob.Spec.MPIReplicaSpecs[kubeflow.MPIReplicaTypeWorker]; !ok {
+			workerReplicas = 0
+		} else {
+			workerReplicas = *workerSpec.Replicas
+		}
 
 		// Get the ConfigMap for this MPIJob.
 		if config, err := c.getOrCreateConfigMap(mpiJob, workerReplicas); config == nil || err != nil {
@@ -534,6 +539,7 @@ func (c *MPIJobController) syncHandler(key string) error {
 		if err != nil {
 			return err
 		}
+
 		if launcher == nil {
 			launcher, err = c.kubeClient.BatchV1().Jobs(namespace).Create(c.newLauncher(mpiJob, c.kubectlDeliveryImage))
 			if err != nil {
